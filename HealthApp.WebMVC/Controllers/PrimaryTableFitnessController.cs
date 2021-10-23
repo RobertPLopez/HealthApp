@@ -35,16 +35,18 @@ namespace HealthApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PrimaryTableFitnessCreate model)
         {
-            if (ModelState.IsValid)
-            {
-                return View(model);
-            }
+            if (!ModelState.IsValid) return View(model);
+            
 
             var service = CreatePrimaryTableFitnessTableServices();
 
-            service.CreatePrimaryFitnessTable(model);
+            if (service.CreatePrimaryFitnessTable(model))
+            {
+                ViewBag.SaveResault = "Your fitness plan was saved!";
+                return RedirectToAction("Index");
+            };
 
-            return RedirectToAction("Index");
+            return View(model);
         }
 
         private PrimaryTableFitnessService CreatePrimaryTableFitnessTableServices()
