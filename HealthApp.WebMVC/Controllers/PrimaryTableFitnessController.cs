@@ -40,12 +40,18 @@ namespace HealthApp.WebMVC.Controllers
                 return View(model);
             }
 
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PrimaryTableFitnessService(userId);
+            var service = CreatePrimaryTableFitnessTableServices();
 
             service.CreatePrimaryFitnessTable(model);
 
             return RedirectToAction("Index");
+        }
+
+        private PrimaryTableFitnessService CreatePrimaryTableFitnessTableServices()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PrimaryTableFitnessService(userId);
+            return service;
         }
     }
 }
