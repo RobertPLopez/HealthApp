@@ -59,6 +59,20 @@ namespace HealthApp.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult PrimaryTableFitnessEdit(int id)
+        {
+            var service = CreatePrimaryTableFitnessTableServices();
+            var detail = service.GetPrimaryTableFitnessById(id);
+            var model =
+                new PrimaryTableFitnessEdit
+                {
+                    MyFitnessPlan = detail.PrimaryTableFitnessEdit,
+                    TypeOfWorkout = detail.TypeOfWorkout,
+                    CaloriesBurned = detail.CaloriesBurned,
+                };
+            return View(model);
+        }
+
         private PrimaryTableFitnessService CreatePrimaryTableFitnessTableServices()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

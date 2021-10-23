@@ -62,6 +62,7 @@ namespace HealthApp.Services
                     ctx
                     .FitnessTables
                     .Single(e => e.MyFitnessPlan == id && e.OwnerId == _userId);
+
                 return
                     new PrimaryTableFitnessDetail
                     { 
@@ -71,6 +72,23 @@ namespace HealthApp.Services
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc,
                     };
+            }
+        }
+
+        public bool UpdatePrimaryTableFitness (PrimaryTableFitnessEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .FitnessTables
+                        .Single(e => e.MyFitnessPlan == model.MyFitnessPlan && e.OwnerId == _userId);
+
+                entity.TypeOfWorkout = model.TypeOfWorkout;
+                entity.CaloriesBurned = model.CaloriesBurned;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
