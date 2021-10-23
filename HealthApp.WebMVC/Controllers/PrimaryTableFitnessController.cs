@@ -1,4 +1,6 @@
 ﻿using HealthApp.Models.PrimaryTableFitness;
+using HealthApp.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace HealthApp.WebMVC.Controllers
         // GET: PrimaryTableFitness Index
         public ActionResult Index()
         {
-            var model = new PrimaryTableFitnessListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PrimaryTableFitnessService(userId);
+            var model = service.GetPrimaryTableFitness();
+
             return View(model);
         }
 
@@ -32,8 +37,15 @@ namespace HealthApp.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                return View(model);
             }
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PrimaryTableFitnessService(userId);
+
+            service.CreatePrimaryFitnessTable(model);
+
+            return RedirectToAction("Index");
         }
     }
 }
