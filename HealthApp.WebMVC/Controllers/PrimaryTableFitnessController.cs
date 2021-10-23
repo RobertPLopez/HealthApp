@@ -10,11 +10,30 @@ namespace HealthApp.WebMVC.Controllers
     public class PrimaryTableFitnessController : Controller
     {
         [Authorize]
-        // GET: PrimaryTableFitness
+        // GET: PrimaryTableFitness Index
         public ActionResult Index()
         {
             var model = new PrimaryTableFitnessListItem[0];
             return View(model);
+        }
+
+        //Add Method here VVV
+        //Get: PrimaryTableFitness Create
+        public ActionResult Create ()
+        {
+            return View();
+        }
+
+        //Add code here VVV
+        //Get: PrimaryTableFitness Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PrimaryTableFitnessCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
         }
     }
 }
