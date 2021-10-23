@@ -61,5 +61,19 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HealthApp.Models\HealthApp.Models.csproj">
+      <Project>{244e4d0d-bf83-4662-bf09-c79ded890145}</Project>
+      <Name>HealthApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HealthApp.Services\HealthApp.Services.csproj">
+      <Project>{7f0c2166-22c0-4dce-a9e5-df95c04bee20}</Project>
+      <Name>HealthApp.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HealthApp.Tests\HealthApp.Tests.csproj">
+      <Project>{ec2222e2-aa59-47f0-b664-a0e361013a43}</Project>
+      <Name>HealthApp.Tests</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
