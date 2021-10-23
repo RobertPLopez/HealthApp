@@ -32,7 +32,7 @@ namespace HealthApp.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<App> Apps { get; set; }
+        public DbSet<PrimaryTableFitness> FitnessTables { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

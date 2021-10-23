@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Data
 {
-    class PrimaryTableFitness
+    public class PrimaryTableFitness
     {
         [Key]
         [Display(Name = "Your Fitness Plan!")]
