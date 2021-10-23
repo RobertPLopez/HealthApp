@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Models.PrimaryTableFitness
 {
-    public class PrimaryTableFitnessCreate
+    public class PrimaryTableFitnessDetail
     {
+        [Key]
+        [Display(Name = "Your Fitness Plan!")]
+        public Guid MyFitnessPlan { get; set; }
         [Required]
         [Display(Name = "Your Workout! Own it!")]
         [MaxLength(150, ErrorMessage = "There are to many characters in this field.")]
@@ -18,5 +21,6 @@ namespace HealthApp.Models.PrimaryTableFitness
         public int CaloriesBurned { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessCreate.cs" />
+    <Compile Include="PrimaryTableFitness\PrimaryTableFitnessDetail.cs" />
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

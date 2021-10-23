@@ -18,11 +18,10 @@ namespace HealthApp.Services
         public bool CreatePrimaryFitnessTable(PrimaryTableFitnessCreate model)
         {
             var entity =
-                new PrimaryTableFitness()
+                new PrimaryTableFitnessCreate()
                 {
-                    OwnerId = _userId,
-                    Workout = model.TypeOfWorkout,
-                    DailyCaloriesBurned = model.CaloriesBurned,
+                    TypeOfWorkout = model.TypeOfWorkout,
+                    CaloriesBurned = model.CaloriesBurned,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
@@ -52,6 +51,26 @@ namespace HealthApp.Services
                         }
                     );
                 return query.ToArray();
+            }
+        }
+
+        public GetPrimaryTableFitnessById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .FitnessTables
+                    .Single(e => e.MyFitnessPlan == id && e.OwnerId == _userId);
+                return
+                    new PrimaryTableFitnessDetail
+                    { 
+                        MyFitnessPlan = entity.MyFitnessPlay,
+                        TypeOfWorkout = entity.TypeOfWorkout,
+                        CaloriesBurned = entity.CaloriesBurned,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc,
+                    };
             }
         }
     }
