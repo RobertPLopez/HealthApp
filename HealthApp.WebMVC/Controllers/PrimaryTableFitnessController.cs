@@ -42,9 +42,11 @@ namespace HealthApp.WebMVC.Controllers
 
             if (service.CreatePrimaryFitnessTable(model))
             {
-                ViewBag.SaveResault = "Your fitness plan was saved!";
+                TempData["SaveResault"] = "Your fitness plan was saved!";
                 return RedirectToAction("Index");
             };
+
+            ModelState.AddModelError("", "Your excersise plan could not be created.");
 
             return View(model);
         }
