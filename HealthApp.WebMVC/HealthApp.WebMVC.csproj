@@ -239,6 +239,7 @@
     <Content Include="Views\PrimaryTableFitness\Create.cshtml" />
     <Content Include="Views\PrimaryTableFitness\PrimaryTableFitnessDetails.cshtml" />
     <Content Include="Views\PrimaryTableFitness\PrimaryTableFitnessEdit.cshtml" />
+    <Content Include="Views\PrimaryTableFitness\PrimaryTableFitnessDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

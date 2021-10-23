@@ -23,7 +23,7 @@ namespace HealthApp.WebMVC.Controllers
         }
 
         //Get: PrimaryTableFitness Create
-        public ActionResult Create ()
+        public ActionResult Create()
         {
             return View();
         }
@@ -75,11 +75,11 @@ namespace HealthApp.WebMVC.Controllers
         //Get: PrimaryTableFitness OVerload Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PrimaryTableFitnessEdit (int id, PrimaryTableFitnessEdit model)
+        public ActionResult PrimaryTableFitnessEdit(int id, PrimaryTableFitnessEdit model)
         {
-            if(!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
-            if (model.MyFitnessPlan ! = id)
+            if (model.MyFitnessPlan! = id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -93,8 +93,33 @@ namespace HealthApp.WebMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("","Your plan couldnt be edited.");
+            ModelState.AddModelError("", "Your plan couldnt be edited.");
             return View();
+        }
+
+        //Get: PrimaryTableFitness Delete
+        [ActionName("Delete")]
+        public ActionResult PrimaryTableFitnessDelete(int id)
+        {
+            var svc = CreatePrimaryTableFitnessTableServices();
+            var model = svc.GetPrimaryTableFitnessById(id);
+
+            return View(model);
+        }
+
+        //Get: PrimaryTableFitness Delete Overload
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreatePrimaryTableFitnessTableServices();
+
+            service.PrimaryTableFitnessDelete(id);
+
+            TempData["SaveREsult"] = "Your plan was deleted";
+
+            return RedirectToAction("Index");
         }
 
         private PrimaryTableFitnessService CreatePrimaryTableFitnessTableServices()

@@ -91,5 +91,19 @@ namespace HealthApp.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool PrimaryTableFitnessDelete (int MyFitnessPlan)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .FitnessTables
+                    .Single(e => e.MyFitnessPlan == MyFitnessPlan && e.OwnerId == _userId);
+                ctx.FitnessTables.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
