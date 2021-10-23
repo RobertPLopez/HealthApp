@@ -22,21 +22,18 @@ namespace HealthApp.WebMVC.Controllers
             return View(model);
         }
 
-        //Add Method here VVV
         //Get: PrimaryTableFitness Create
         public ActionResult Create ()
         {
             return View();
         }
 
-        //Add code here VVV
         //Get: PrimaryTableFitness Post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PrimaryTableFitnessCreate model)
         {
             if (!ModelState.IsValid) return View(model);
-            
 
             var service = CreatePrimaryTableFitnessTableServices();
 
@@ -51,6 +48,7 @@ namespace HealthApp.WebMVC.Controllers
             return View(model);
         }
 
+        //Get: PrimaryTableFitness Details
         public ActionResult PrimaryTableFitnessDetails(int id)
         {
             var svc = CreatePrimaryTableFitnessTableServices();
@@ -59,6 +57,7 @@ namespace HealthApp.WebMVC.Controllers
             return View(model);
         }
 
+        //Get: PrimaryTableFitness Edit
         public ActionResult PrimaryTableFitnessEdit(int id)
         {
             var service = CreatePrimaryTableFitnessTableServices();
@@ -71,6 +70,31 @@ namespace HealthApp.WebMVC.Controllers
                     CaloriesBurned = detail.CaloriesBurned,
                 };
             return View(model);
+        }
+
+        //Get: PrimaryTableFitness OVerload Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PrimaryTableFitnessEdit (int id, PrimaryTableFitnessEdit model)
+        {
+            if(!ModelState.IsValid) return View(model);
+
+            if (model.MyFitnessPlan ! = id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreatePrimaryFitnessTable();
+
+            if (service.UpdatePrimaryTableFitness())
+            {
+                TempData["SaveResult"] = "Your plan has been updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("","Your plan couldnt be edited.");
+            return View();
         }
 
         private PrimaryTableFitnessService CreatePrimaryTableFitnessTableServices()
