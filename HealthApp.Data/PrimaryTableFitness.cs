@@ -19,5 +19,8 @@ namespace HealthApp.Data
         [Required]
         [Display(Name = "This is the total number of calories burned!")]
         public int CaloriesBurned { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
