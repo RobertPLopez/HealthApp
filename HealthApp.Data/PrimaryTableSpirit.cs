@@ -8,16 +8,24 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Data
 {
-    public class PrimaryTableFitness
+    public class PrimaryTableSpirit
     {
         [Key]
-        public int WorkoutId { get; set; }
+        public int HowIViewMe { get; set; }
         [ForeignKey("Profile Number")]
         public Guid OwnerId { get; set; }
-        //[Required]
-        //public ICollection <Excersises> : ExcersiseTabele I need to be able to connect this to the sub fitness tables 
         [Required]
-        public int TotalCaloriesBurned { get; set; }
+        public int HowIViewOthers { get; set; }
+        [Required]
+        public int HowOtherPerceiveMe { get; set; }
+        [Required]
+        public string MySocialCircle { get; set; }
+        [Required]
+        public int MyRestHours { get; set; }
+        [Required]
+        public string OutsideMotivation { get; set; }
+        [Required]
+        public string InternalMotivaiton { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }

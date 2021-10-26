@@ -58,6 +58,10 @@
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessDetail.cs" />
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessEdit.cs" />
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessListItem.cs" />
+    <Compile Include="PrimaryTableSpirit\SpiritCreate.cs" />
+    <Compile Include="PrimaryTableSpirit\SpiritDetail.cs" />
+    <Compile Include="PrimaryTableSpirit\SpiritEdit.cs" />
+    <Compile Include="PrimaryTableSpirit\SpiritListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
