@@ -235,11 +235,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\PrimaryTableFitness\Index.cshtml" />
-    <Content Include="Views\PrimaryTableFitness\Create.cshtml" />
-    <Content Include="Views\PrimaryTableFitness\PrimaryTableFitnessDetails.cshtml" />
-    <Content Include="Views\PrimaryTableFitness\PrimaryTableFitnessEdit.cshtml" />
-    <Content Include="Views\PrimaryTableFitness\PrimaryTableFitnessDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

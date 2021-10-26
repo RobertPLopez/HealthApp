@@ -31,7 +31,7 @@ namespace HealthApp.WebMVC.Controllers
         //Get: PrimaryTableFitness Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PrimaryTableFitnessCreate model)
+        public ActionResult CreatePrimaryFitnessTable(PrimaryTableFitnessCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -65,9 +65,8 @@ namespace HealthApp.WebMVC.Controllers
             var model =
                 new PrimaryTableFitnessEdit
                 {
-                    MyFitnessPlan = detail.PrimaryTableFitnessEdit,
-                    TypeOfWorkout = detail.TypeOfWorkout,
-                    CaloriesBurned = detail.CaloriesBurned,
+                    WorkoutId = detail.WorkoutId,
+                    TotalCaloriesBurned = detail.TotalCaloriesBurned,
                 };
             return View(model);
         }
@@ -79,7 +78,7 @@ namespace HealthApp.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.MyFitnessPlan! = id)
+            if (model.WorkoutId! = id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

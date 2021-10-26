@@ -12,10 +12,11 @@ namespace HealthApp.Models.PrimaryTableFitness
         [Required]
         [Display(Name = "Your Workout! Own it!")]
         [MaxLength(150, ErrorMessage = "There are to many characters in this field.")]
-        public string TypeOfWorkout { get; set; }
+        public int WorkoutId { get; set; }
+        //[Required]
+        //ICollection object in the data layer
         [Required]
-        [Display(Name = "This is the total number of calories burned!")]
-        public int CaloriesBurned { get; set; }
+        public string TotalCaloriesBurned { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
     }

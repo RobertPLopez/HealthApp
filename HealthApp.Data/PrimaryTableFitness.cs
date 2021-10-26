@@ -10,15 +10,12 @@ namespace HealthApp.Data
     public class PrimaryTableFitness
     {
         [Key]
-        [Display(Name = "Your Fitness Plan!")]
-        public Guid MyFitnessPlan { get; set; }
+        public int WorkoutId { get; set; }
+        public Guid OwnerId { get; set; }
+        //[Required]
+        //public ICollection <Excersises> : ExcersiseTabele I need to be able to connect this to the sub fitness tables 
         [Required]
-        [Display(Name = "Your Workout! Own it!")]
-        [MaxLength(150, ErrorMessage = "There are to many characters in this field.")]
-        public string TypeOfWorkout { get; set; }
-        [Required]
-        [Display(Name = "This is the total number of calories burned!")]
-        public int CaloriesBurned { get; set; }
+        public int TotalCaloriesBurned { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }

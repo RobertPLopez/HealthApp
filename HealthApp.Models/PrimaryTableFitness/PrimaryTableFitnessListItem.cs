@@ -9,10 +9,13 @@ namespace HealthApp.Models.PrimaryTableFitness
 {
     public class PrimaryTableFitnessListItem
     {
-        public Guid MyFitnessPlan { get; set; }
-        public string TypeOfWorkout { get; set; }
-        public int CaloriesBurned { get; set; }
-        [Display(Name="Created")]
+        public int WorkoutId { get; set; }
+
+        //public ICollection <Excersises> : ExcersiseTabele I need to be able to connect this to the sub fitness tables 
+
+        public int TotalCaloriesBurned { get; set; }
+
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

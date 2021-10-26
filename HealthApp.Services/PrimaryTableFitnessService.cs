@@ -1,4 +1,5 @@
-﻿using HealthApp.Models.PrimaryTableFitness;
+﻿using HealthApp.Data;
+using HealthApp.Models.PrimaryTableFitness;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +21,14 @@ namespace HealthApp.Services
             var entity =
                 new PrimaryTableFitnessCreate()
                 {
-                    TypeOfWorkout = model.TypeOfWorkout,
-                    CaloriesBurned = model.CaloriesBurned,
+                    WorkoutId = model.WorkoutId,
+                    TotalCaloriesBurned = model.TotalCaloriesBurned,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.FitnessTables.Add(entity);
+                ctx.FitnessTables.Add(entity); //I dont understand why this logic doesnt work. The var entity contains all of the data in the create class to create 1 instance.
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -44,9 +45,8 @@ namespace HealthApp.Services
                         e => 
                         new PrimaryTableFitnessListItem
                         {
-                            MyFitnessPlan = e.MyFitnessPlan,
-                            TypeOfWorkout = e.TypeOfWorkout,
-                            CaloriesBurned = e.CaloriesBurned, 
+                            WorkoutId = e.WorkoutId,
+                            TotalCaloriesBurned = e.TotalCaloriesBurned, 
                             CreatedUtc = e.CreatedUtc
                         }
                     );
@@ -61,14 +61,14 @@ namespace HealthApp.Services
                 var entity =
                     ctx
                     .FitnessTables
-                    .Single(e => e.MyFitnessPlan == id && e.OwnerId == _userId);
+                    .Single(e => e.WorkoutId == id && e.OwnerId == _userId);
 
                 return
                     new PrimaryTableFitnessDetail
-                    { 
-                        MyFitnessPlan = entity.MyFitnessPlay,
-                        TypeOfWorkout = entity.TypeOfWorkout,
-                        CaloriesBurned = entity.CaloriesBurned,
+                    {
+                        OwnerId = entity.OwnerId,
+                        WorkoutId = entity.WorkoutId,
+                        TotalCaloriesBurned = entity.TotalCaloriesBurned,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc,
                     };
@@ -82,10 +82,10 @@ namespace HealthApp.Services
                 var entity =
                     ctx
                         .FitnessTables
-                        .Single(e => e.MyFitnessPlan == model.MyFitnessPlan && e.OwnerId == _userId);
+                        .Single(e => e.WorkoutId == model.WorkoutId && e.OwnerId == _userId);
 
-                entity.TypeOfWorkout = model.TypeOfWorkout;
-                entity.CaloriesBurned = model.CaloriesBurned;
+                entity.WorkoutId = model.WorkoutId;
+                entity.TotalCaloriesBurned = model.TotalCaloriesBurned;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
@@ -99,7 +99,7 @@ namespace HealthApp.Services
                 var entity =
                     ctx
                     .FitnessTables
-                    .Single(e => e.MyFitnessPlan == MyFitnessPlan && e.OwnerId == _userId);
+                    .Single(e => e.WorkoutId == MyFitnessPlan && e.OwnerId == _userId);
                 ctx.FitnessTables.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
