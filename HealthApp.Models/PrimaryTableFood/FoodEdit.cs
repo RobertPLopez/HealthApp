@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Models.PrimaryTableFood
 {
-    class FoodEdit
+    public class FoodEdit
     {
+        [Key]
+        public int FoodId { get; set; }
         [Required]
         public string FoodName { get; set; }
         [Required]

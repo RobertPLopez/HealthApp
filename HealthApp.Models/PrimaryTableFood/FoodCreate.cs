@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Models.PrimaryTableFood
 {
-    class FoodCreate
+    public class FoodCreate
     {
         [Key]
         [Display(Name = "This is your food meal id.")]

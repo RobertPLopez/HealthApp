@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HealthApp.Models.PrimaryTableFood
 {
-    class FoodDetail
+    public class FoodDetail
     {
         [Key]
         public int FoodId { get; set; }
+        [ForeignKey("Profile Number")]
+        public Guid OwnerId { get; set; }
         [Required]
         public string FoodName { get; set; }
         [Required]

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Models.PrimaryTableFood
 {
-    class FoodListItem
+    public class FoodListItem
     {
         [Key]
         public int FoodId { get; set; }
