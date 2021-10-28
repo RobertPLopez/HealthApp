@@ -58,6 +58,10 @@
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessDetail.cs" />
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessEdit.cs" />
     <Compile Include="PrimaryTableFitness\PrimaryTableFitnessListItem.cs" />
+    <Compile Include="PrimaryTableFood\FoodCreate.cs" />
+    <Compile Include="PrimaryTableFood\FoodDetail.cs" />
+    <Compile Include="PrimaryTableFood\FoodEdit.cs" />
+    <Compile Include="PrimaryTableFood\FoodListItem.cs" />
     <Compile Include="PrimaryTableSpirit\SpiritCreate.cs" />
     <Compile Include="PrimaryTableSpirit\SpiritDetail.cs" />
     <Compile Include="PrimaryTableSpirit\SpiritEdit.cs" />
@@ -68,8 +72,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PrimaryTableFood\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
