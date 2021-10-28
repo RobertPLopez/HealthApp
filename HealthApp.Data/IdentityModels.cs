@@ -34,6 +34,8 @@ namespace HealthApp.Data
 
         public DbSet<PrimaryTableFitness> FitnessTables { get; set; }
 
+        public DbSet<PrimaryTableSpirit> SpiritTables { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

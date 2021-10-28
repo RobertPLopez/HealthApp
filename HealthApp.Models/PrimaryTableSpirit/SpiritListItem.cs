@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthApp.Models.PrimaryTableSpirit
 {
-    class SpiritListItem
+    public class SpiritListItem
     {
         public int HowIViewMe { get; set; }
 
